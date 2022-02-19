@@ -1,0 +1,49 @@
+.todoBody{
+    padding-top:10%;
+    color:white;
+    width:70%;
+    margin: auto;
+}
+
+.add{
+    background-color:rgb(17, 17, 70);
+    color:white;
+    border: none;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    padding:1%;
+    
+}
+
+.intag{
+   padding:1%;
+   color:rgb(17, 17, 70);
+   border: none;
+   border-top-left-radius:4px;
+   border-bottom-left-radius:4px;
+   outline:none;
+}
+
+.heading{
+    color:rgb(17, 17, 70);
+}
+
+.btn{
+    border:none;
+    margin: 1%;
+    padding:1%;
+    background-color: rgb(17, 17, 70);
+    color:white;
+    border-radius:4px;
+}
+
+.task{
+    font-size:20px;
+    /* background-color:white; */
+    width:100%;
+    margin: auto;
+    margin-top:2%;
+    margin-bottom:2%;
+    color:rgb(17, 17, 70);
+    padding:1%;
+}
