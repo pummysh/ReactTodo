@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/Index.css">
+    <title>Login</title>
+</head>
+<body>
+
+    <div id="header"></div>
+
+    <div class="signIn">
+        <h3>Sign In page</h3>
+        
+        <form id="form">
+            <input type="text" id="email" placeholder="Enter your email">
+            <br>
+            <input type="text" id="password" placeholder="Enter your password">
+            <br>
+            <button id="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
+<script type="module">
+    import {navbar} from "../Navbar/Navbar.js";
+    let Navbar=document.getElementById("header");
+    Navbar.innerHTML=navbar();
+
+    let form =document.getElementById("form")
+
+    let data=JSON.parse(localStorage.getItem("userData"));
+
+    let submit=document.getElementById("submit")
+    .addEventListener('click',checkUser);
+
+    function checkUser(){
+
+        event.preventDefault();
+
+        let email=form.email.value;
+        let password=form.password.value;
+        let flag=false;
+        let index=-1;
+        let a=data.reduce((acc,cur,i)=>{
+
+            if(cur.email===email && cur.password===password){
+                acc=true;
+                index=i;
+            }
+            return acc;
+        },false)
+
+        if(!a){
+            alert(`Email or password doesnt match `);
+            
+            form.email.value="";
+            form.password.value="";
+
+        }else{
+            localStorage.setItem("user",JSON.stringify(data[index].username))
+            window.location.href ="/View/Home/Home.html";
+        }
+
+    }
+
+
+</script>

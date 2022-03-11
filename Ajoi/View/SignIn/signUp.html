@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/Index.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div id="header"></div>
+    <form id="form" class="signIn">
+        <h3>Sign Up page</h3>
+        <input type="text" id="username" placeholder="Enter your name" required>
+        <br>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <br>
+        <input type="password" id="password" placeholder="Enter your password" required>
+        <br>
+        <button id="submit">Submit</button>
+    </form>
+</body>
+</html>
+<script type="module">
+    import {navbar} from "../Navbar/Navbar.js";
+    let Navbar=document.getElementById("header");
+
+    Navbar.innerHTML=navbar();
+
+    let form=document.getElementById("form");
+    let submit=document.getElementById("submit")
+    .addEventListener('click',addUser);
+
+    function addUser() {
+        event.preventDefault();
+
+        let data={
+            username:form.username.value,
+            email:form.email.value,
+            password:form.password.value,
+        }
+
+        if(!JSON.parse(localStorage.getItem("userData"))){
+            localStorage.setItem("userData",JSON.stringify([]));
+        }
+
+        let arr=JSON.parse(localStorage.getItem("userData"));
+        arr.push(data);
+
+        localStorage.setItem("userData",JSON.stringify(arr));
+
+        let name=form.username.value;
+
+        localStorage.setItem("user",JSON.stringify(name));
+
+        form.username.value = "";
+        form.email.value = "";
+        form.password.value = "";
+
+        window.location.href ="/View/Home/Home.html";
+
+
+    }
+
+</script>
